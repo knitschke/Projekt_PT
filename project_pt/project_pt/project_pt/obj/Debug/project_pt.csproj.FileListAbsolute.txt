@@ -1,0 +1,14 @@
+c:\users\krzychu\source\repos\project_pt\project_pt\bin\Debug\project_pt.exe.config
+c:\users\krzychu\source\repos\project_pt\project_pt\bin\Debug\project_pt.exe
+c:\users\krzychu\source\repos\project_pt\project_pt\bin\Debug\project_pt.pdb
+c:\users\krzychu\source\repos\project_pt\project_pt\obj\Debug\project_pt.csprojResolveAssemblyReference.cache
+c:\users\krzychu\source\repos\project_pt\project_pt\obj\Debug\project_pt.Form1.resources
+c:\users\krzychu\source\repos\project_pt\project_pt\obj\Debug\project_pt.Properties.Resources.resources
+c:\users\krzychu\source\repos\project_pt\project_pt\obj\Debug\project_pt.csproj.GenerateResource.Cache
+c:\users\krzychu\source\repos\project_pt\project_pt\obj\Debug\project_pt.csproj.CoreCompileInputs.cache
+c:\users\krzychu\source\repos\project_pt\project_pt\obj\Debug\project_pt.exe
+c:\users\krzychu\source\repos\project_pt\project_pt\obj\Debug\project_pt.pdb
+c:\users\krzychu\source\repos\project_pt\project_pt\obj\Debug\project_pt.log.resources
+c:\users\krzychu\source\repos\project_pt\project_pt\obj\Debug\project_pt.video.resources
+c:\users\krzychu\source\repos\project_pt\project_pt\obj\Debug\project_pt.pictures.resources
+c:\users\krzychu\source\repos\project_pt\project_pt\obj\Debug\project_pt.time.resources
