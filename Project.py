@@ -18,28 +18,26 @@ bind_port = 5007
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind((bind_ip, bind_port))
-server.listen(5)  # max backlog of connections
+f = open('torecv.png','wb')
+server.listen(5)  
 checkhr='26'
 checkmin='61'
 timex=''
-
-
-
 os.system('killall omxplayer.bin')
 
 def showfiles(code):
     if code=='pic':
         for root, dirs, files in os.walk("/home/pi/Pictures/."):
-            files1="";
+            files1=""
             for filename in files:
                 files1+=":"+filename
             print (files1)
             return files1
     if code=='vid':
         for root, dirs, files in os.walk("/home/pi/Videos/."):
-            files1="";
+            files1 = ""
             for filename in files:
-                files1+=":"+filename
+                files1 += ":"+filename
             print (files1)
             return files1
 
@@ -119,9 +117,15 @@ print ('Listening on {}:{}'.format(bind_ip, bind_port))
 while (msg!="start"):
     client_sock, address = server.accept()
     print ('Accepted connection from {}:{}'.format(address[0], address[1]))
+    f = open('TT.png','wb')
+    while (l):
+        print "Receiving..."
+        f.write(l)
+        l = c.recv(1024)
+    f.close()
     client_handler = threading.Thread(
         target=handle_client_connection,
-        args=(client_sock,)  # without comma you'd get a... TypeError: handle_client_connection() argument after * must be a sequence, not _socketobject
+        args=(client_sock,)
         
     )
     
@@ -136,7 +140,7 @@ while x==1:
     yy=timex.split(':')
     print(yy[0])
     print(yy[1])
-    if int(yy[0])==int(checkhr) and int(yy[1])==int(checkmin):
+    if int(yy[0])>=int(checkhr) and int(yy[1])>=int(checkmin):
         sys.exit()
     global display_time_img
     if len(piclist)>2:
@@ -165,7 +169,7 @@ while x==1:
             time.sleep(display_time_movie)
             os.system('killall omxplayer.bin')
             y=y+1
-        #i=i+1 
+
     
         
     

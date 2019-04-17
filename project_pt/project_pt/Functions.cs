@@ -34,7 +34,11 @@ namespace project_pt
                 TcpClient client = new TcpClient(ip, port);
                 string command1 = command;
                 NetworkStream ns = client.GetStream();
-
+                int bufferSize = 1024;
+                string Filename = @"C:\Users\Administrator\Desktop\TT.png";
+                byte[] buffer = null;
+                byte[] header = null;
+                FileStream fs = new FileStream(Filename, FileMode.Open);
                 byte[] bytes = new byte[1024];
                 if (date != "")
                     command1 += (':' + date);
@@ -44,6 +48,26 @@ namespace project_pt
                     command1 += (':' + target);
                 if (time2 != "")
                     command1 += (':' + time2);
+                if (command == "snd")
+                {
+                    int bufferCount = Convert.ToInt32(Math.Ceiling((double)fs.Length / (double)bufferSize));
+                    string headerStr = "Content-length:" + fs.Length.ToString() + "\r\nFilename:" + @"C:\Users\Administrator\Desktop\" + "TT.png";
+                    header = new byte[bufferSize];
+                    Array.Copy(Encoding.ASCII.GetBytes(headerStr), header, Encoding.ASCII.GetBytes(headerStr).Length);
+
+                    client.Client.Send(header);
+
+                    for (int i = 0; i < bufferCount; i++)
+                    {
+                        buffer = new byte[bufferSize];
+                        int size = fs.Read(buffer, 0, bufferSize);
+
+                        client.Client.Send(buffer, size, SocketFlags.Partial);
+
+                    }
+
+                }
+
                 byte[] bytemsg = Encoding.ASCII.GetBytes(command1);
                 ns.Write(bytemsg, 0, bytemsg.Length);
 
@@ -100,6 +124,9 @@ namespace project_pt
                         time = "";
                         target = "";
                         break;
+                    case "sendf":
+                        break;
+
                     default:
                         Console.WriteLine("Default case");
                         break;
